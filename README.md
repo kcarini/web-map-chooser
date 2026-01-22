@@ -2,7 +2,7 @@
 
 An interactive web application that helps developers choose the right open source web mapping library for their project.
 
-**[Try it live →](https://kcarini.github.io/web-map-chooser/)**
+**[Try it live →](https://kiricarini.com/web-map-chooser/)**
 
 ## About
 
