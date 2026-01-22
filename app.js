@@ -180,32 +180,6 @@ const questions = [
             }
         ]
     },
-    {
-        id: 'budget',
-        title: 'What\'s your budget situation?',
-        description: 'Some great tools are free, others have costs at scale.',
-        type: 'single',
-        options: [
-            {
-                value: 'free',
-                title: 'Free / Open Source only',
-                description: 'No budget for paid services',
-                icon: '🆓'
-            },
-            {
-                value: 'freemium',
-                title: 'Freemium is okay',
-                description: 'Free tier works, might pay for features',
-                icon: '💳'
-            },
-            {
-                value: 'enterprise',
-                title: 'Enterprise budget',
-                description: 'Cost is less important than capabilities',
-                icon: '🏢'
-            }
-        ]
-    }
 ];
 
 // ===================================
@@ -229,29 +203,7 @@ const libraries = {
             data_sources: { geojson: 10, csv: 7, api: 7, tiles: 9, shapefile: 4, database: 5 },
             data_volume: { small: 10, medium: 6, large: 3 },
             features: { markers: 10, clustering: 8, heatmaps: 7, drawing: 8, routing: 6, '3d': 2, animations: 5, offline: 7 },
-            basemap: { default: 10, themed: 7, custom: 4 },
-            budget: { free: 10, freemium: 10, enterprise: 8 }
-        }
-    },
-    mapboxgl: {
-        name: 'Mapbox GL JS',
-        tagline: 'Stunning vector maps with powerful customization',
-        url: 'https://www.mapbox.com/mapbox-gljs',
-        docs: 'https://docs.mapbox.com/mapbox-gl-js/',
-        tags: ['Vector Tiles', 'Custom Styles', 'WebGL', '3D Support'],
-        strengths: [
-            'Beautiful default styles and easy customization',
-            'Excellent performance with large datasets',
-            'Built-in 3D terrain and buildings',
-            'Smooth animations and transitions'
-        ],
-        scores: {
-            skill_level: { beginner: 6, intermediate: 9, advanced: 10 },
-            data_sources: { geojson: 10, csv: 6, api: 9, tiles: 10, shapefile: 5, database: 7 },
-            data_volume: { small: 9, medium: 10, large: 9 },
-            features: { markers: 9, clustering: 9, heatmaps: 9, drawing: 7, routing: 8, '3d': 10, animations: 10, offline: 6 },
-            basemap: { default: 9, themed: 10, custom: 10 },
-            budget: { free: 5, freemium: 9, enterprise: 10 }
+            basemap: { default: 10, themed: 7, custom: 4 }
         }
     },
     openlayers: {
@@ -271,29 +223,7 @@ const libraries = {
             data_sources: { geojson: 10, csv: 6, api: 9, tiles: 10, shapefile: 8, database: 8 },
             data_volume: { small: 8, medium: 9, large: 8 },
             features: { markers: 9, clustering: 8, heatmaps: 7, drawing: 10, routing: 5, '3d': 6, animations: 7, offline: 8 },
-            basemap: { default: 8, themed: 7, custom: 8 },
-            budget: { free: 10, freemium: 10, enterprise: 10 }
-        }
-    },
-    googlemaps: {
-        name: 'Google Maps Platform',
-        tagline: 'The familiar choice with world-class data',
-        url: 'https://developers.google.com/maps',
-        docs: 'https://developers.google.com/maps/documentation/javascript',
-        tags: ['Industry Standard', 'Great Data', 'Places API', 'Street View'],
-        strengths: [
-            'Most accurate and up-to-date map data',
-            'Built-in Places, Directions, and Street View',
-            'Familiar UI that users trust',
-            'Excellent mobile support'
-        ],
-        scores: {
-            skill_level: { beginner: 8, intermediate: 9, advanced: 8 },
-            data_sources: { geojson: 8, csv: 6, api: 8, tiles: 5, shapefile: 3, database: 5 },
-            data_volume: { small: 9, medium: 7, large: 5 },
-            features: { markers: 10, clustering: 8, heatmaps: 8, drawing: 8, routing: 10, '3d': 7, animations: 6, offline: 4 },
-            basemap: { default: 10, themed: 8, custom: 6 },
-            budget: { free: 3, freemium: 8, enterprise: 9 }
+            basemap: { default: 8, themed: 7, custom: 8 }
         }
     },
     deckgl: {
@@ -313,8 +243,7 @@ const libraries = {
             data_sources: { geojson: 10, csv: 9, api: 10, tiles: 8, shapefile: 5, database: 9 },
             data_volume: { small: 6, medium: 9, large: 10 },
             features: { markers: 7, clustering: 8, heatmaps: 10, drawing: 4, routing: 4, '3d': 10, animations: 10, offline: 3 },
-            basemap: { default: 7, themed: 8, custom: 8 },
-            budget: { free: 10, freemium: 10, enterprise: 10 }
+            basemap: { default: 7, themed: 8, custom: 8 }
         }
     },
     keplergl: {
@@ -334,8 +263,7 @@ const libraries = {
             data_sources: { geojson: 10, csv: 10, api: 3, tiles: 5, shapefile: 4, database: 3 },
             data_volume: { small: 9, medium: 10, large: 9 },
             features: { markers: 8, clustering: 8, heatmaps: 10, drawing: 3, routing: 2, '3d': 9, animations: 9, offline: 2 },
-            basemap: { default: 8, themed: 9, custom: 5 },
-            budget: { free: 10, freemium: 10, enterprise: 8 }
+            basemap: { default: 8, themed: 9, custom: 5 }
         }
     },
     cesium: {
@@ -355,8 +283,7 @@ const libraries = {
             data_sources: { geojson: 9, csv: 5, api: 9, tiles: 10, shapefile: 7, database: 7 },
             data_volume: { small: 8, medium: 9, large: 9 },
             features: { markers: 8, clustering: 6, heatmaps: 6, drawing: 7, routing: 5, '3d': 10, animations: 10, offline: 5 },
-            basemap: { default: 8, themed: 8, custom: 9 },
-            budget: { free: 7, freemium: 9, enterprise: 10 }
+            basemap: { default: 8, themed: 8, custom: 9 }
         }
     },
     maplibre: {
@@ -376,29 +303,7 @@ const libraries = {
             data_sources: { geojson: 10, csv: 6, api: 9, tiles: 10, shapefile: 5, database: 7 },
             data_volume: { small: 9, medium: 10, large: 9 },
             features: { markers: 9, clustering: 9, heatmaps: 9, drawing: 7, routing: 5, '3d': 9, animations: 9, offline: 7 },
-            basemap: { default: 8, themed: 9, custom: 10 },
-            budget: { free: 10, freemium: 10, enterprise: 10 }
-        }
-    },
-    arcgis: {
-        name: 'ArcGIS Maps SDK for JavaScript',
-        tagline: 'Enterprise-grade GIS with comprehensive capabilities',
-        url: 'https://developers.arcgis.com/javascript/',
-        docs: 'https://developers.arcgis.com/javascript/latest/api-reference/',
-        tags: ['Enterprise', 'Full GIS', 'Esri Ecosystem', 'Analysis'],
-        strengths: [
-            'Complete GIS analysis tools built-in',
-            'Seamless Esri ecosystem integration',
-            'Enterprise security and support',
-            'Most comprehensive feature set'
-        ],
-        scores: {
-            skill_level: { beginner: 4, intermediate: 7, advanced: 10 },
-            data_sources: { geojson: 9, csv: 8, api: 10, tiles: 10, shapefile: 10, database: 10 },
-            data_volume: { small: 8, medium: 9, large: 9 },
-            features: { markers: 10, clustering: 9, heatmaps: 9, drawing: 10, routing: 10, '3d': 10, animations: 8, offline: 9 },
-            basemap: { default: 10, themed: 10, custom: 9 },
-            budget: { free: 3, freemium: 6, enterprise: 10 }
+            basemap: { default: 8, themed: 9, custom: 10 }
         }
     }
 };
@@ -616,12 +521,6 @@ function generateReasons(lib) {
         } else if (dataVolume === 'medium') {
             reasons.push('Good performance with medium-sized data');
         }
-    }
-    
-    // Budget match
-    const budget = answers.budget;
-    if (budget === 'free' && lib.scores.budget.free >= 9) {
-        reasons.push('Completely free and open source');
     }
     
     // Feature highlights
