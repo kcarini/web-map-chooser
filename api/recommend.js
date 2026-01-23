@@ -50,7 +50,7 @@ Keep your response concise and practical. Use a friendly, expert tone. Do not us
 
         // Call Gemini API
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: 'POST',
                 headers: {
@@ -62,16 +62,20 @@ Keep your response concise and practical. Use a friendly, expert tone. Do not us
                     }],
                     generationConfig: {
                         temperature: 0.7,
-                        maxOutputTokens: 300,
+                        maxOutputTokens: 1024,
                     }
                 })
             }
         );
 
         if (!response.ok) {
-            const error = await response.text();
-            console.error('Gemini API error:', error);
-            return res.status(500).json({ error: 'Failed to get AI recommendations' });
+            const errorText = await response.text();
+            console.error('Gemini API error:', response.status, errorText);
+            return res.status(500).json({ 
+                error: 'Failed to get AI recommendations',
+                details: `Status: ${response.status}`,
+                debug: process.env.NODE_ENV === 'development' ? errorText : undefined
+            });
         }
 
         const data = await response.json();
