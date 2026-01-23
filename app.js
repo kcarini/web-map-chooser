@@ -560,6 +560,7 @@ function generateReasons(lib) {
 function showResults() {
     const ranked = calculateScores();
     const container = document.getElementById('recommendations');
+    const aiContainer = document.getElementById('ai-insight');
     
     const html = ranked.slice(0, 5).map((lib, index) => {
         const isTopPick = index === 0;
@@ -608,6 +609,83 @@ function showResults() {
     
     container.innerHTML = html;
     showScreen('results-screen');
+    
+    // Fetch AI-enhanced insights
+    fetchAIInsights(ranked.slice(0, 3), aiContainer);
+}
+
+// ===================================
+// AI Integration
+// ===================================
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? ''  // Local development - use relative path
+    : ''; // Production - same domain on Vercel
+
+async function fetchAIInsights(topRecommendations, container) {
+    // Show loading state
+    container.innerHTML = `
+        <div class="ai-insight-card loading">
+            <div class="ai-icon">✨</div>
+            <div class="ai-content">
+                <div class="ai-label">AI-Powered Insight</div>
+                <div class="ai-loading">
+                    <span class="loading-dot"></span>
+                    <span class="loading-dot"></span>
+                    <span class="loading-dot"></span>
+                    Analyzing your requirements...
+                </div>
+            </div>
+        </div>
+    `;
+    container.style.display = 'block';
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/recommend`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                answers: answers,
+                topRecommendations: topRecommendations.map(r => ({
+                    name: r.name,
+                    tagline: r.tagline
+                }))
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('API request failed');
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.insight) {
+            container.innerHTML = `
+                <div class="ai-insight-card">
+                    <div class="ai-icon">✨</div>
+                    <div class="ai-content">
+                        <div class="ai-label">AI-Powered Insight</div>
+                        <p class="ai-text">${data.insight}</p>
+                    </div>
+                </div>
+            `;
+        } else {
+            container.style.display = 'none';
+        }
+    } catch (error) {
+        console.log('AI insights unavailable:', error.message);
+        // Hide the container gracefully if AI is unavailable
+        container.innerHTML = `
+            <div class="ai-insight-card unavailable">
+                <div class="ai-icon">💡</div>
+                <div class="ai-content">
+                    <div class="ai-label">Pro Tip</div>
+                    <p class="ai-text">Start with the top recommendation and explore its documentation. Most libraries have great getting-started guides that will have you mapping in minutes!</p>
+                </div>
+            </div>
+        `;
+    }
 }
 
 // ===================================
