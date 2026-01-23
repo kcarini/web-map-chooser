@@ -619,7 +619,7 @@ function showResults() {
 // ===================================
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? ''  // Local development - use relative path
-    : ''; // Production - same domain on Vercel
+    : 'https://map-stack-finder.vercel.app'; // Production - Vercel API
 
 async function fetchAIInsights(topRecommendations, container) {
     // Show loading state
